@@ -1,24 +1,17 @@
 # encode64
 
-Extracted from oh-my-zsh
-
-# Original readme
+Extracted from oh-my-zsh. Extended with the decodefile64 function.
 
 Alias plugin for encoding or decoding using `base64` command.
 
-To use it, add `encode64` to the plugins array in your zshrc file:
-
-```zsh
-plugins=(... encode64)
-```
-
 ## Functions and Aliases
 
-| Function       | Alias  | Description                            |
-| -------------- | ------ | -------------------------------------- |
-| `encode64`     | `e64`  | Encodes given data to base64           |
-| `encodefile64` | `ef64` | Encodes given file's content to base64 |
-| `decode64`     | `d64`  | Decodes given data from base64         |
+| Function       | Alias  | Description                              |
+| -------------- | ------ | ---------------------------------------- |
+| `encode64`     | `e64`  | Encodes given data to base64             |
+| `encodefile64` | `ef64` | Encodes given file's content to base64   |
+| `decode64`     | `d64`  | Decodes given data from base64           |
+| `decodefile64` | `df64` | Decodes given file's content from base64 |
 
 ## Usage and examples
 
@@ -52,7 +45,7 @@ Encode a file's contents to base64 and save output to text file.
   ```console
   $ encodefile64 ohmyzsh.icn
   ohmyzsh.icn's content encoded in base64 and saved as ohmyzsh.icn.txt
-  $ ef64 "oh-my-zsh"
+  $ ef64 oh-my-zsh.icn
   ohmyzsh.icn's content encoded in base64 and saved as ohmyzsh.icn.txt
   ```
 
@@ -74,4 +67,18 @@ Encode a file's contents to base64 and save output to text file.
   oh-my-zsh
   $ echo "b2gtbXktenNoCg==" | d64
   oh-my-zsh
+  ```
+
+### Decoding a file
+
+Decode a file's base64 encoded content and save output to file.  
+**NOTE:** Takes provided file and saves decoded content as new file with stripped extension. (e.g. encoded.txt -> encoded)
+
+- From parameter
+
+  ```console
+  $ decodefile64 ohmyzsh.icn.txt
+  ohmyzsh.icn.txt's content decoded and saved as ohmyzsh.icn
+  $ df64 ohmyzsh.icn.txt
+  ohmyzsh.icn.txt's content decoded and saved as ohmyzsh.icn
   ```

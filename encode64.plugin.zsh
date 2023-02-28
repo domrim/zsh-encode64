@@ -22,6 +22,17 @@ decode64() {
         printf '%s' $1 | base64 --decode
     fi
 }
+
+decodefile64() {
+    if [[ $# -eq 0 ]]; then
+        echo "You must provide a filename"
+    else
+        out=${1%.*}
+        base64 --decode -i $1 -o $out
+        echo "${1}'s content decoded and saved as ${out}"
+    fi
+}
 alias e64=encode64
 alias ef64=encodefile64
 alias d64=decode64
+alias df64=decodefile64
